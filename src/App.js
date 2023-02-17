@@ -14,12 +14,26 @@ export default function App() {
   const [pendingTask, setPendingTask] = useState(''); // valeur courante du champ de saisie
   const [taskList, setTaskList] = useState(() => {
     const items = JSON.parse(localStorage.getItem('items'));
-    console.log(items)
     if (items) {
       return items;
     }
     else {
       return initialTodos;
+      // const otherTasks = fetch(`https://jsonplaceholder.typicode.com/users/1/todos`);
+      // fetch('https://jsonplaceholder.typicode.com/users/1/todos', {
+      //   method: 'GET',
+      //   headers: {
+      //     'Accept': 'application/json',
+      //   },
+      // })
+      // .then(response => response.json())
+      // .then(response => console.log(JSON.stringify(response)))
+      // // .then(response => setTaskList.id = response.id,
+      // //   response => setTaskList.title = response.title,
+      // //   response => setTaskList.done = response.completed)
+      // .then(const items = JSON.parse(response);
+      //   return items;
+      // )
     }
   }); // liste des todo (tableau)
 
@@ -28,10 +42,41 @@ export default function App() {
     
   // }, []);
 
+  // const [taskList, setTaskList] = useState();
+
   useEffect(() => {
     console.log(taskList)
     localStorage.setItem('items', JSON.stringify(taskList));
   }, [taskList]);
+
+  // useEffect(() => 
+  // () => {
+  //   const items = JSON.parse(localStorage.getItem('items'));
+  //   if (items) {
+  //     return items;
+  //   }
+  //   else {
+  //     // return initialTodos;
+  //     // const otherTasks = fetch(`https://jsonplaceholder.typicode.com/users/1/todos`);
+  //     fetch('https://jsonplaceholder.typicode.com/users/1/todos', {
+  //       method: 'GET',
+  //       headers: {
+  //         'Accept': 'application/json',
+  //       },
+  //     })
+  //     .then(response => response.json())
+  //     .then(response => console.log(JSON.stringify(response)))
+  //     // .then(response => setTaskList.id = response.id,
+  //     //   response => setTaskList.title = response.title,
+  //     //   response => setTaskList.done = response.completed)
+  //     .then(const items = JSON.parse(response);
+  //       return items;
+  //     )
+
+  //   }
+  // },
+  // []
+  // )
 
 
   
