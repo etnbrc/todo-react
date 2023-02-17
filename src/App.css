@@ -1,3 +1,14 @@
+h1 {
+  color: aquamarine;
+}
+
+input {
+  border-color: aquamarine;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 3px;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -14,9 +25,12 @@ ul {
 
 .liste input[type="text"]:focus {
   border-color: rgba(0, 0, 0, 0.2);
+  color: blue;
+  text-emphasis-color: red;
 }
 
 .liste [type="checkbox"]:checked + input[type="text"] {
   background-color: rgba(0, 0, 0, 0.2);
-
+  color: white;
+  border: none;
 }

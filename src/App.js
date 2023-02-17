@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 let nextId = 3;
@@ -10,11 +10,30 @@ const initialTodos = [
   { id: 2, title: 'Faire du thé', done: false },
 ];
 
-
-
 export default function App() {
   const [pendingTask, setPendingTask] = useState(''); // valeur courante du champ de saisie
-  const [taskList, setTaskList] = useState(initialTodos); // liste des todo (tableau)
+  const [taskList, setTaskList] = useState(() => {
+    const items = JSON.parse(localStorage.getItem('items'));
+    console.log(items)
+    if (items) {
+      return items;
+    }
+    else {
+      return initialTodos;
+    }
+  }); // liste des todo (tableau)
+
+
+  // useEffect(() => {
+    
+  // }, []);
+
+  useEffect(() => {
+    console.log(taskList)
+    localStorage.setItem('items', JSON.stringify(taskList));
+  }, [taskList]);
+
+
   
   function handleToggleTaskList(taskListId, nextDone) {
     setTaskList(
